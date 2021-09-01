@@ -5,7 +5,7 @@ import time
 from selenium.webdriver.common.by import By
 
 
-class GmailNameChecker:
+class GmailUserNameChecker:
 
     def __init__(self):
         options = Options()
@@ -14,8 +14,8 @@ class GmailNameChecker:
         options.add_argument(
             "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36")
         driver = webdriver.Chrome(
-            './driver/chromedriver', chrome_options=self.options)
-        url = 'https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp'
+            './driver/chromedriver', chrome_options=options)
+        url = 'https://accounts.google.com/signup/v2/webcreateaccount'
         browser = driver.get(url)
 
     def check_username(self):
@@ -29,3 +29,8 @@ class GmailNameChecker:
             time.sleep(2)
             input1.clear()
             self.browser.quit()
+
+
+if __name__ == '__main__':
+    gmail = GmailUserNameChecker()
+    gmail.check_username()
